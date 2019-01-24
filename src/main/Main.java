@@ -107,6 +107,10 @@ public class Main {
     }
 
     private static double functionFi(double x, double y, int i, int k) {
+        if(outsideE(x,y,k))
+        {
+            return 0;
+        }
         double b1,b2;
         double returned;
         b1=B1B2[k][0];
@@ -129,6 +133,16 @@ public class Main {
                     throw new IllegalArgumentException("Fi function "+i+1+ " not found");
         }
         return returned;
+    }
+
+    private static boolean outsideE(double x, double y, int k) {
+        double xe=B1B2[k][0];
+        double ye=B1B2[k][1];
+        if(x<xe) return true;
+        if(x>xe+1) return true;
+        if(y<ye) return true;
+        if(y>ye+1) return true;
+        return false;
     }
 
     private static double functionG(double x, double y)
